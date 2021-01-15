@@ -11,9 +11,6 @@
 (function() {
     "use strict";
 
-    //.rp-entry-comment
-    //document.querySelector("#review-panel > div.rp-entry-list.ng-scope > div > div:nth-child(1) > div > comment-entry > div > div.rp-entry.rp-entry-comment");
-    //document.querySelector("#review-panel > div.rp-entry-list.ng-scope > div");
     let editorTarget = "#editor > div > div.ace-editor-body.ace_editor.ace_hidpi.ace-chrome > div.ace_scroller > div > div.ace_layer.ace_text-layer";
     let reviewTarget = "#review-panel > div.rp-entry-list.ng-scope > div.rp-entry-wrapper.ng-scope";
 
@@ -33,8 +30,6 @@
         let nodeId = node.getAttribute(nodeIdString);
         let hadNodeIdSet = true;
 
-        // log("new node found", { nodeId, hadNodeIdSet, node });
-
         if (!nodeId) {
             hadNodeIdSet = false;
             nodeId = Math.random().toString();
@@ -45,10 +40,8 @@
     }
 
     function addedNodeHandler(node) {
-        // log(`checked a node.`);
 
         if (!node.matches || !node.matches(lineSelector)) {
-            // log(`a node matched!`);
             return;
         }
 
@@ -61,10 +54,7 @@
             if (node.classList == "ace_storage ace_type"){
 
                 if (node.innerText.toUpperCase().trim() === "\\SUBSECTION") {
-                    //node.parentElement.style.backgroundColor = "lightgreen"; //this one works fine, but i can't use it without \Section...
-                    //node.childElement.style.backgroundColor = "#930f80";
                     node.parentElement.style.fontWeight = "bolder";
-                    // node.style.fontWeight = "normal";
                     node.parentElement.style.fontStyle = "italic";
                     node.style.fontStyle = "normal";
 
@@ -72,11 +62,7 @@
                 }
 
                 if (node.innerText.toUpperCase().trim() === "\\SECTION") {
-                    //node.parentElement.style.backgroundColor = "lightgreen"; //i cannot get this to work consistently...
-                    //node.childElement.style.backgroundColor = "#930f80";
                     node.parentElement.style.fontWeight = "bolder";
-                    // node.style.fontWeight = "normal";
-
                     log(`changed style of ` + node.parentElement.className);
                 }
             }
@@ -123,7 +109,7 @@
             characterData: true
         });
 /*
-        ////// for the review pane //////////////////////////////////////////////
+        ////// for the review pane (not working yet) //////////////////////////////////////////////
         const reviewBodyObserver = new MutationObserver(function(mutations) {
             log(`checking review with MutationObserver.`);
 
@@ -152,7 +138,7 @@
         */
     }
 
-    //hacky way to wait for the fucking page to actually load.
+    //hacky way to wait for the page to actually load.
     function waitForKeyElements (
     selectorTxt, /* Required: The selector string that
                         specifies the desired element(s).
