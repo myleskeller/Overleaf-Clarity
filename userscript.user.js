@@ -6,6 +6,7 @@
 // @match        https://*.overleaf.com/*
 // @grant        unsafeWindow
 // @icon         https://www.overleaf.com/favicon.ico
+// @updateURL    https://github.com/myleskeller/Overleaf-Clarity/raw/main/userscript.user.js
 // ==/UserScript==
 
 (function() {
